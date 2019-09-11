@@ -183,11 +183,11 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         txt_Nombre = new javax.swing.JTextField();
         btn_Editar_Cliente = new javax.swing.JButton();
         JPanel_Usuarios = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        jLabel_Usuario_Nombre = new javax.swing.JLabel();
+        jLabel_Usuario_Apaterno = new javax.swing.JLabel();
+        jLabel_Usuario_Amaterno = new javax.swing.JLabel();
+        jLabel_Usuario_Dirreccion = new javax.swing.JLabel();
+        jLabel_Usuario_Telefono = new javax.swing.JLabel();
         txt_Usuario_Apaterno = new javax.swing.JTextField();
         txt_Usuario_Amaterno = new javax.swing.JTextField();
         txt_Usuario_Dirreccion = new javax.swing.JTextField();
@@ -433,30 +433,30 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         JPanel_Usuarios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         JPanel_Usuarios.setLayout(null);
 
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel18.setText("Nombre:");
-        JPanel_Usuarios.add(jLabel18);
-        jLabel18.setBounds(110, 120, 54, 17);
+        jLabel_Usuario_Nombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Usuario_Nombre.setText("Nombre:");
+        JPanel_Usuarios.add(jLabel_Usuario_Nombre);
+        jLabel_Usuario_Nombre.setBounds(110, 120, 54, 17);
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel19.setText("A paterno:");
-        JPanel_Usuarios.add(jLabel19);
-        jLabel19.setBounds(110, 170, 70, 17);
+        jLabel_Usuario_Apaterno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Usuario_Apaterno.setText("A paterno:");
+        JPanel_Usuarios.add(jLabel_Usuario_Apaterno);
+        jLabel_Usuario_Apaterno.setBounds(110, 170, 70, 17);
 
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel20.setText("A materno:");
-        JPanel_Usuarios.add(jLabel20);
-        jLabel20.setBounds(110, 220, 80, 17);
+        jLabel_Usuario_Amaterno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Usuario_Amaterno.setText("A materno:");
+        JPanel_Usuarios.add(jLabel_Usuario_Amaterno);
+        jLabel_Usuario_Amaterno.setBounds(110, 220, 80, 17);
 
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel21.setText("Dirreccion:");
-        JPanel_Usuarios.add(jLabel21);
-        jLabel21.setBounds(110, 270, 80, 14);
+        jLabel_Usuario_Dirreccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Usuario_Dirreccion.setText("Dirreccion:");
+        JPanel_Usuarios.add(jLabel_Usuario_Dirreccion);
+        jLabel_Usuario_Dirreccion.setBounds(110, 270, 80, 14);
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel22.setText("Telefono:");
-        JPanel_Usuarios.add(jLabel22);
-        jLabel22.setBounds(110, 320, 60, 14);
+        jLabel_Usuario_Telefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel_Usuario_Telefono.setText("Telefono:");
+        JPanel_Usuarios.add(jLabel_Usuario_Telefono);
+        jLabel_Usuario_Telefono.setBounds(110, 320, 60, 14);
         JPanel_Usuarios.add(txt_Usuario_Apaterno);
         txt_Usuario_Apaterno.setBounds(200, 160, 190, 30);
         JPanel_Usuarios.add(txt_Usuario_Amaterno);
@@ -874,12 +874,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -887,6 +882,11 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_Usuario_Amaterno;
+    private javax.swing.JLabel jLabel_Usuario_Apaterno;
+    private javax.swing.JLabel jLabel_Usuario_Dirreccion;
+    private javax.swing.JLabel jLabel_Usuario_Nombre;
+    private javax.swing.JLabel jLabel_Usuario_Telefono;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
