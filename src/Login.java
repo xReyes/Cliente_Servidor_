@@ -30,7 +30,7 @@ public class Login extends javax.swing.JFrame {
     //njj
     //hola soy gus vergas
     //hey soy ReyesGold
-    //Job Del Toro branch
+    //Job Del Toro branch 2
     //NUEVO CAMBIO
 
     private DatagramSocket socket;
