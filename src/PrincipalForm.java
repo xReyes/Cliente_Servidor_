@@ -184,6 +184,8 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         btn_Editar_Cliente = new javax.swing.JButton();
         JPanel_Usuarios = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -419,26 +421,18 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
         JPanel_Usuarios.setBackground(new java.awt.Color(255, 255, 255));
         JPanel_Usuarios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        JPanel_Usuarios.setLayout(null);
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Gustavo");
+        JPanel_Usuarios.add(jLabel14);
+        jLabel14.setBounds(16, 30, 51, 17);
 
-        javax.swing.GroupLayout JPanel_UsuariosLayout = new javax.swing.GroupLayout(JPanel_Usuarios);
-        JPanel_Usuarios.setLayout(JPanel_UsuariosLayout);
-        JPanel_UsuariosLayout.setHorizontalGroup(
-            JPanel_UsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPanel_UsuariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel14)
-                .addContainerGap(715, Short.MAX_VALUE))
-        );
-        JPanel_UsuariosLayout.setVerticalGroup(
-            JPanel_UsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPanel_UsuariosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel14)
-                .addContainerGap(452, Short.MAX_VALUE))
-        );
+        jLabel17.setText("ID");
+        JPanel_Usuarios.add(jLabel17);
+        jLabel17.setBounds(27, 73, 11, 14);
+        JPanel_Usuarios.add(jTextField1);
+        jTextField1.setBounds(90, 70, 140, 20);
 
         JTabbedPrincipal.addTab("Usuarios", JPanel_Usuarios);
 
@@ -827,6 +821,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -842,6 +837,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rad_Femenino;
     private javax.swing.JRadioButton rad_Masculino;
     private javax.swing.JTextField txt_Ap_Materno;
