@@ -30,6 +30,7 @@ public class Login extends javax.swing.JFrame {
     //njj
     //hola soy gus vergas
     //hey soy ReyesGold
+    //Job Del Toro
 
     private DatagramSocket socket;
     Direccion_IP ip = new Direccion_IP();
