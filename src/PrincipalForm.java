@@ -183,11 +183,17 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         txt_Nombre = new javax.swing.JTextField();
         btn_Editar_Cliente = new javax.swing.JButton();
         JPanel_Usuarios = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        txt_Usuario_Apaterno = new javax.swing.JTextField();
+        txt_Usuario_Amaterno = new javax.swing.JTextField();
+        txt_Usuario_Dirreccion = new javax.swing.JTextField();
+        txt_Usuario_Telefono = new javax.swing.JTextField();
+        txt_Usuario_Nombre = new javax.swing.JTextField();
+        btn_Guardar_Usuario = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -427,22 +433,44 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         JPanel_Usuarios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuarios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         JPanel_Usuarios.setLayout(null);
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel14.setText("Gustavo");
-        JPanel_Usuarios.add(jLabel14);
-        jLabel14.setBounds(16, 30, 51, 17);
-
-        jLabel17.setText("ID");
-        JPanel_Usuarios.add(jLabel17);
-        jLabel17.setBounds(27, 73, 11, 14);
-        JPanel_Usuarios.add(jTextField1);
-        jTextField1.setBounds(90, 70, 140, 20);
-
-        jLabel18.setText("jLabel18");
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel18.setText("Nombre:");
         JPanel_Usuarios.add(jLabel18);
-        jLabel18.setBounds(20, 110, 40, 14);
-        JPanel_Usuarios.add(jTextField3);
-        jTextField3.setBounds(90, 110, 140, 20);
+        jLabel18.setBounds(110, 120, 54, 17);
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setText("A paterno:");
+        JPanel_Usuarios.add(jLabel19);
+        jLabel19.setBounds(110, 170, 70, 17);
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel20.setText("A materno:");
+        JPanel_Usuarios.add(jLabel20);
+        jLabel20.setBounds(110, 220, 80, 17);
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel21.setText("Dirreccion:");
+        JPanel_Usuarios.add(jLabel21);
+        jLabel21.setBounds(110, 270, 80, 14);
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setText("Telefono:");
+        JPanel_Usuarios.add(jLabel22);
+        jLabel22.setBounds(110, 320, 60, 14);
+        JPanel_Usuarios.add(txt_Usuario_Apaterno);
+        txt_Usuario_Apaterno.setBounds(200, 160, 190, 30);
+        JPanel_Usuarios.add(txt_Usuario_Amaterno);
+        txt_Usuario_Amaterno.setBounds(200, 210, 190, 30);
+        JPanel_Usuarios.add(txt_Usuario_Dirreccion);
+        txt_Usuario_Dirreccion.setBounds(200, 260, 190, 30);
+        JPanel_Usuarios.add(txt_Usuario_Telefono);
+        txt_Usuario_Telefono.setBounds(200, 310, 190, 30);
+        JPanel_Usuarios.add(txt_Usuario_Nombre);
+        txt_Usuario_Nombre.setBounds(200, 110, 190, 30);
+
+        btn_Guardar_Usuario.setText("Guardar");
+        JPanel_Usuarios.add(btn_Guardar_Usuario);
+        btn_Guardar_Usuario.setBounds(110, 410, 71, 23);
 
         JTabbedPrincipal.addTab("Usuarios", JPanel_Usuarios);
 
@@ -830,6 +858,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton btn_Editar_Cliente;
     private javax.swing.JButton btn_Eliminar_Cliente;
     private javax.swing.JButton btn_Guardar_Cliente;
+    private javax.swing.JButton btn_Guardar_Usuario;
     private javax.swing.JButton btn_Nuevo_Cliente;
     private javax.swing.JButton btn_estadoCuenta;
     private javax.swing.JButton btn_movimientos;
@@ -843,12 +872,14 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -863,9 +894,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JRadioButton rad_Femenino;
     private javax.swing.JRadioButton rad_Masculino;
     private javax.swing.JTextField txt_Ap_Materno;
@@ -874,6 +903,11 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTextField txt_Email;
     private javax.swing.JTextField txt_Nombre;
     private javax.swing.JTextField txt_Telefono;
+    private javax.swing.JTextField txt_Usuario_Amaterno;
+    private javax.swing.JTextField txt_Usuario_Apaterno;
+    private javax.swing.JTextField txt_Usuario_Dirreccion;
+    private javax.swing.JTextField txt_Usuario_Nombre;
+    private javax.swing.JTextField txt_Usuario_Telefono;
     private javax.swing.JTextField txt_nombre_Buscar;
     // End of variables declaration//GEN-END:variables
 }
