@@ -43,9 +43,9 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         try {
             initComponents();
 
+            socket = new DatagramSocket();
             dto = new Clientes_DTO();
             conn = new Conexion();
-            socket = new DatagramSocket();
 
             setLocationRelativeTo(null);
             setTitle("Sistema Bancario");
@@ -56,8 +56,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             h1 = new Thread(this);
             h1.start();
 
-//            btn_Editar_Cliente.setEnabled(false);
-//            btn_Eliminar_Cliente.setEnabled(false);
+            txt_id_cliente.setVisible(false);
         } catch (SocketException ex) {
             Logger.getLogger(PrincipalForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -196,7 +195,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setIconImage(new ImageIcon(getClass().getResource("/img/icono.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/img/icono3.jpg")).getImage());
 
         JTabbedPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -263,9 +262,9 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jPanel1.add(btn_nomina);
         btn_nomina.setBounds(400, 440, 200, 40);
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/banco.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono2 - copia.png"))); // NOI18N
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(420, 20, 160, 160);
+        jLabel12.setBounds(400, 40, 190, 150);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/une.png"))); // NOI18N
         jPanel1.add(jLabel13);
@@ -365,16 +364,28 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         });
         JPanelClientes.add(btn_Eliminar_Cliente);
         btn_Eliminar_Cliente.setBounds(600, 420, 69, 23);
+
+        txt_Email.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         JPanelClientes.add(txt_Email);
         txt_Email.setBounds(540, 190, 190, 30);
+
+        txt_nombre_Buscar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         JPanelClientes.add(txt_nombre_Buscar);
         txt_nombre_Buscar.setBounds(570, 20, 120, 30);
+
+        txt_Ap_Paterno.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         JPanelClientes.add(txt_Ap_Paterno);
         txt_Ap_Paterno.setBounds(200, 150, 190, 30);
+
+        txt_Ap_Materno.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         JPanelClientes.add(txt_Ap_Materno);
         txt_Ap_Materno.setBounds(200, 190, 190, 30);
+
+        txt_Direccion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         JPanelClientes.add(txt_Direccion);
         txt_Direccion.setBounds(200, 280, 190, 30);
+
+        txt_Telefono.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         JPanelClientes.add(txt_Telefono);
         txt_Telefono.setBounds(200, 320, 190, 30);
 
@@ -405,6 +416,8 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel10.setText("Nombre:");
         JPanelClientes.add(jLabel10);
         jLabel10.setBounds(100, 120, 54, 17);
+
+        txt_Nombre.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         JPanelClientes.add(txt_Nombre);
         txt_Nombre.setBounds(200, 110, 190, 30);
 
@@ -695,8 +708,9 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         if (JOptionPane.OK_OPTION == a) {
 
             try {
-                nombre_Cliente = txt_nombre_Buscar.getText();
-                String mensaje = "DeleteCliente " + nombre_Cliente + " Registro Borrado";
+                String id_clientes;
+                id_clientes = txt_id_cliente.getText();
+                String mensaje = "DeleteCliente " + id_clientes + " Registro Borrado";
                 byte datos[] = mensaje.getBytes();
                 //crear enviarPaquete
 
@@ -712,7 +726,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
                 excepcionSocket.printStackTrace();
                 System.exit(1);
             }
-            limpar_Cliente();
 
         } else {
 
@@ -730,7 +743,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
             try {
                 //obtener mensaje del campo de texto y convertirlo en arrreglo byte
-                buscar_Clientes = txt_nombre_Buscar.getText();
+                buscar_Clientes = txt_nombre_Buscar.getText().trim();
                 String mensaje = "SearchCliente" + " " + buscar_Clientes + " ";
                 byte datos[] = mensaje.getBytes();
 //          //crear enviarPaquete
@@ -744,9 +757,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             try {
                 esperarPaquetesClientes();
                 socket = new DatagramSocket();
-
-                btn_Editar_Cliente.setEnabled(true);
-                btn_Eliminar_Cliente.setEnabled(true);
 
             } catch (SocketException excepcionSocket) {
                 excepcionSocket.printStackTrace();
@@ -837,11 +847,12 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             String[] variables;
             variables = cad.split(" ");
 
-            txt_Nombre.setText(variables[0]);
-            txt_Ap_Paterno.setText(variables[1]);
-            txt_Ap_Materno.setText(variables[2]);
+            txt_id_cliente.setText(variables[0]);
+            txt_Nombre.setText(variables[1]);
+            txt_Ap_Paterno.setText(variables[2]);
+            txt_Ap_Materno.setText(variables[3]);
 
-            if (variables[3].equals("Masculino")) {
+            if (variables[4].equals("Masculino")) {
 
                 rad_Masculino.setSelected(true);
 
@@ -851,11 +862,11 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
             }
 
-            txt_Direccion.setText(variables[4]);
-            txt_Telefono.setText(variables[5]);
-            txt_Email.setText(variables[6]);
-            combo_Pais.setSelectedItem(variables[7]);
-            combo_Tipo_Cuenta.setSelectedItem(variables[8]);
+            txt_Direccion.setText(variables[5]);
+            txt_Telefono.setText(variables[6]);
+            txt_Email.setText(variables[7]);
+            combo_Pais.setSelectedItem(variables[8]);
+            combo_Tipo_Cuenta.setSelectedItem(variables[9]);
 
         } catch (IOException excepcion) {
             excepcion.printStackTrace();

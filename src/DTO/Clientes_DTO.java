@@ -134,8 +134,7 @@ public class Clientes_DTO {
 
     public void Delete(Clientes_DTO dto, Connection conn) throws SQLException {
 
-        PreparedStatement stmt1 = conn.prepareStatement("UPDATE clientes SET estado = ? WHERE id_clientes = '" + this.id_clientes + "';");
-        stmt1.setString(1, "Inactivo");
+        PreparedStatement stmt1 = conn.prepareStatement("UPDATE clientes SET estado = 'Inactivo' WHERE id_clientes = '" + this.id_clientes + "';");
         stmt1.executeUpdate();
 
     }
@@ -161,11 +160,11 @@ public class Clientes_DTO {
 
     public void Search(Clientes_DTO dto, Connection conn) throws SQLException {
 
-        PreparedStatement stmt1 = conn.prepareStatement("SELECT * FROM clientes WHERE nombre_Cliente = '?';");
-        stmt1.setString(1, dto.getNombre());
+        PreparedStatement stmt1 = conn.prepareStatement("SELECT * FROM clientes WHERE nombre_Cliente = '" + this.nombre + "';");
         rs = stmt1.executeQuery();
 
         if (rs.next()) {
+            this.id_clientes = rs.getString("id_clientes");
             this.nombre = rs.getString("nombre_Cliente");
             this.ap_Paterno = rs.getString("a_Paterno");
             this.ap_Materno = rs.getString("a_Materno");
@@ -174,7 +173,7 @@ public class Clientes_DTO {
             this.telefono = rs.getString("telefono");
             this.email = rs.getString("email");
             this.pais = rs.getString("pais");
-            this.tipo_cuenta = rs.getString("tipo_cuenta");
+            this.tipo_cuenta = rs.getString("tipo_cliente");
 
         }
 
