@@ -56,9 +56,8 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             h1 = new Thread(this);
             h1.start();
 
-            btn_Editar_Cliente.setEnabled(false);
-            btn_Eliminar_Cliente.setEnabled(false);
-
+//            btn_Editar_Cliente.setEnabled(false);
+//            btn_Eliminar_Cliente.setEnabled(false);
         } catch (SocketException ex) {
             Logger.getLogger(PrincipalForm.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -129,8 +128,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         combo_Pais.setSelectedIndex(0);
         combo_Tipo_Cuenta.setSelectedIndex(0);
 
-        System.out.println(JPanelClientes.getSize());
-
     }
 
     /**
@@ -182,6 +179,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel10 = new javax.swing.JLabel();
         txt_Nombre = new javax.swing.JTextField();
         btn_Editar_Cliente = new javax.swing.JButton();
+        txt_id_cliente = new javax.swing.JTextField();
         JPanel_Usuarios = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -192,7 +190,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel16 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
@@ -418,6 +416,8 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         });
         JPanelClientes.add(btn_Editar_Cliente);
         btn_Editar_Cliente.setBounds(490, 420, 61, 23);
+        JPanelClientes.add(txt_id_cliente);
+        txt_id_cliente.setBounds(200, 70, 100, 30);
 
         JTabbedPrincipal.addTab("Clientes", JPanelClientes);
 
@@ -492,8 +492,13 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empresas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jTextField1.setText("jTextField1");
+        jTextField2.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -502,7 +507,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(301, 301, 301)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(402, Short.MAX_VALUE))
         );
@@ -510,7 +515,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(190, 190, 190)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(229, Short.MAX_VALUE))
@@ -578,7 +583,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             pais = combo_Pais.getSelectedItem().toString();
             tipo_cuenta = combo_Tipo_Cuenta.getSelectedItem().toString();
 
-            String mensaje = "newCliente " + nombre_Cliente + " " + ap_Paterno + " " + ap_Materno + " " + sexo + " " + direccion + " " + email + " " + telefono + " " + pais + " " + tipo_cuenta + " ";
+            String mensaje = "NewCliente " + nombre_Cliente + " " + ap_Paterno + " " + ap_Materno + " " + sexo + " " + direccion + " " + email + " " + telefono + " " + pais + " " + tipo_cuenta + " ";
             byte datos[] = mensaje.getBytes();
             JOptionPane.showMessageDialog(null, mensaje);
             //crear enviarPaquete
@@ -637,7 +642,46 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         int a = JOptionPane.showConfirmDialog(this, "Estas Seguro de Editar el Cliente?");
         if (JOptionPane.OK_OPTION == a) {
 
-            limpar_Cliente();
+            try {
+
+                String id_cliente;
+                String ap_Paterno;
+                String ap_Materno;
+                String sexo;
+                String direccion;
+                String telefono;
+                String email;
+                String pais;
+                String tipo_cuenta;
+
+                id_cliente = txt_id_cliente.getText().trim();
+                nombre_Cliente = txt_Nombre.getText().trim();
+                ap_Paterno = txt_Ap_Paterno.getText().trim();
+                ap_Materno = txt_Ap_Materno.getText().trim();
+                sexo = sexo_Cliente();
+                direccion = txt_Direccion.getText().trim();
+                email = txt_Email.getText().trim();
+                telefono = txt_Telefono.getText().trim();
+                pais = combo_Pais.getSelectedItem().toString();
+                tipo_cuenta = combo_Tipo_Cuenta.getSelectedItem().toString();
+
+                String mensaje = "EditCliente " + id_cliente + " " + nombre_Cliente + " " + ap_Paterno + " " + ap_Materno + " " + sexo + " " + direccion + " " + email + " " + telefono + " " + pais + " " + tipo_cuenta + " ";
+                byte datos[] = mensaje.getBytes();
+                JOptionPane.showMessageDialog(null, mensaje);
+                //crear enviarPaquete
+
+                DatagramPacket snd = ip.Direccion(datos);
+                socket.send(snd);//enviar paquete
+
+            } catch (IOException exceptionES) {
+                exceptionES.printStackTrace();
+            }
+            try {
+                socket = new DatagramSocket();
+            } catch (SocketException excepcionSocket) {
+                excepcionSocket.printStackTrace();
+                System.exit(1);
+            }
 
         } else {
 
@@ -712,6 +756,13 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         }
 
     }//GEN-LAST:event_btn_Buscar_ClienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        Cliente4 cl = new Cliente4();
+        cl.setVisible(true);
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -855,6 +906,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JRadioButton rad_Femenino;
     private javax.swing.JRadioButton rad_Masculino;
     private javax.swing.JTextField txt_Ap_Materno;
@@ -863,6 +915,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTextField txt_Email;
     private javax.swing.JTextField txt_Nombre;
     private javax.swing.JTextField txt_Telefono;
+    private javax.swing.JTextField txt_id_cliente;
     private javax.swing.JTextField txt_nombre_Buscar;
     // End of variables declaration//GEN-END:variables
 }

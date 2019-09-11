@@ -16,6 +16,7 @@ import java.sql.SQLException;
  */
 public class Clientes_DTO {
 
+    private String id_clientes;
     private String nombre;
     private String ap_Paterno;
     private String ap_Materno;
@@ -27,6 +28,14 @@ public class Clientes_DTO {
     private String tipo_cuenta;
 
     private ResultSet rs;
+
+    public String getId_clientes() {
+        return id_clientes;
+    }
+
+    public void setId_clientes(String id_clientes) {
+        this.id_clientes = id_clientes;
+    }
 
     public String getNombre() {
         return nombre;
@@ -125,13 +134,28 @@ public class Clientes_DTO {
 
     public void Delete(Clientes_DTO dto, Connection conn) throws SQLException {
 
-        PreparedStatement stmt1 = conn.prepareStatement("UPDATE clientes SET estado = ? WHERE nombre_Cliente = '" + this.nombre + "';");
+        PreparedStatement stmt1 = conn.prepareStatement("UPDATE clientes SET estado = ? WHERE id_clientes = '" + this.id_clientes + "';");
         stmt1.setString(1, "Inactivo");
         stmt1.executeUpdate();
 
     }
 
-    public void Edit(Clientes_DTO dto, Connection conn) {
+    public void Edit(Clientes_DTO dto, Connection conn) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(
+                "UPDATE clientes SET nombre_Cliente = ?, a_paterno = ?, a_materno = ?, sexo = ?, direccion = ?, telefono = ?, email = ?, pais = ?, tipo_cliente = ?, estado = ? "
+                + "WHERE id_clientes = '" + this.id_clientes + "';");
+
+        ps.setString(1, dto.getNombre());
+        ps.setString(2, dto.getAp_Paterno());
+        ps.setString(3, dto.getAp_Materno());
+        ps.setString(4, dto.getSexo());
+        ps.setString(5, dto.getDireccion());
+        ps.setString(6, dto.getTelefono());
+        ps.setString(7, dto.getEmail());
+        ps.setString(8, dto.getPais());
+        ps.setString(9, dto.getTipo_cuenta());
+        ps.setString(10, "Activo");
+        ps.executeUpdate();
 
     }
 

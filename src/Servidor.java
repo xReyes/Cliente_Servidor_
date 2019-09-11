@@ -84,7 +84,7 @@ public class Servidor extends JFrame {
 
                         mensaje = obj2.getNombre() + " " + obj2.getPassword() + " ";
 
-                    } else if (variables[0].equals("newCliente")) {
+                    } else if (variables[0].equals("NewCliente")) {
 
                         cliente_dto.setNombre(variables[1]);
                         cliente_dto.setAp_Paterno(variables[2]);
@@ -98,7 +98,24 @@ public class Servidor extends JFrame {
 
                         cliente_dto.Insert(cliente_dto, conn);
 
-                        JOptionPane.showMessageDialog(null, "Cliente Agreado con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Cliente Agregado con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (variables[0].equals("EditCliente")) {
+
+                        cliente_dto.setId_clientes(variables[1]);
+                        cliente_dto.setNombre(variables[2]);
+                        cliente_dto.setAp_Paterno(variables[3]);
+                        cliente_dto.setAp_Materno(variables[4]);
+                        cliente_dto.setSexo(variables[5]);
+                        cliente_dto.setDireccion(variables[6]);
+                        cliente_dto.setEmail(variables[7]);
+                        cliente_dto.setTelefono(variables[8]);
+                        cliente_dto.setPais(variables[9]);
+                        cliente_dto.setTipo_cuenta(variables[10]);
+
+                        cliente_dto.Edit(cliente_dto, conn);
+
+                        JOptionPane.showMessageDialog(null, "Cliente Editado con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
 
                     } else if (variables[0].equals("DeleteCliente")) {
 

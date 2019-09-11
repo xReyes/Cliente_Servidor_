@@ -32,7 +32,7 @@ public class Cliente4 extends javax.swing.JFrame {
             txtCliente.setEnabled(true);
 
             btnBorrar.setEnabled(false);
-            btnBuscar.setEnabled(false);
+//            btnBuscar.setEnabled(false);
             btnEditar.setEnabled(false);
 
             setLocationRelativeTo(null);
