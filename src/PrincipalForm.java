@@ -186,13 +186,15 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel14 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
@@ -436,6 +438,12 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         JPanel_Usuarios.add(jTextField1);
         jTextField1.setBounds(90, 70, 140, 20);
 
+        jLabel18.setText("jLabel18");
+        JPanel_Usuarios.add(jLabel18);
+        jLabel18.setBounds(20, 110, 40, 14);
+        JPanel_Usuarios.add(jTextField3);
+        jTextField3.setBounds(90, 110, 140, 20);
+
         JTabbedPrincipal.addTab("Usuarios", JPanel_Usuarios);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -493,7 +501,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
         jButton1.setText("jButton1");
 
-        jTextField1.setText("jTextField1");
+        jTextField2.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -502,7 +510,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(301, 301, 301)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addContainerGap(402, Short.MAX_VALUE))
         );
@@ -510,7 +518,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(190, 190, 190)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(229, Short.MAX_VALUE))
@@ -839,6 +847,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -855,6 +864,8 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JRadioButton rad_Femenino;
     private javax.swing.JRadioButton rad_Masculino;
     private javax.swing.JTextField txt_Ap_Materno;
