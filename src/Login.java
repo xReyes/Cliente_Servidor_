@@ -33,7 +33,7 @@ public class Login extends javax.swing.JFrame {
     //Job Del Toro nuevo branch
     //NUEVO CAMBIO
     //Branch Luis 1
-    //Branch Gustavo_1.0
+    //Branch Gustavo_1.0 nuevo branch
 
     private DatagramSocket socket;
     Direccion_IP ip = new Direccion_IP();
