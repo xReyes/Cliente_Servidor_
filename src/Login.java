@@ -27,6 +27,7 @@ public class Login extends javax.swing.JFrame {
     String password;
     
     //PRUEBA
+    //njj
 
     private DatagramSocket socket;
     Direccion_IP ip = new Direccion_IP();
