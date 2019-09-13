@@ -13,7 +13,7 @@ public class Conexion {
         try {
             DriverManager.registerDriver(new org.gjt.mm.mysql.Driver());
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/sistema_bancario", "root", "");
+                    "jdbc:mysql://localhost/sistema_bancario?characterEncoding=latin1&useConfigs=maxPerformance", "root", "Trabajo82463");
             // con.createStatement();
             this.conn = con;
         } catch (SQLException e) {
