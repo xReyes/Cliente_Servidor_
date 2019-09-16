@@ -25,9 +25,8 @@ public class Servidor extends JFrame {
         setSize(400, 300);
         setVisible(true);
 
-        Login lg = new Login();
-        lg.setVisible(true);
-
+//        Login lg = new Login();
+//        lg.setVisible(true);
         //crar objeto DatagramaSocket para enviar y recivir paquetes
         try {
             socket = new DatagramSocket(5000);
@@ -63,19 +62,8 @@ public class Servidor extends JFrame {
                             0, recibirPaquete.getLength()));
                     String[] variables;
                     variables = cad.split(" ");
-                    if (variables[0].equals("1")) {
-                        obj2.SetNombre(variables[1]);
-                        obj2.setPerfil(variables[2]);
-                        obj2.SetPassword(variables[3]);
-                        obj2.Insert(conn);
-
-                    } else if (variables[0].equals("2")) {
-                        obj2.SetNombre(variables[1]);
-                        obj2.Select(conn);
-
-                        mensaje = obj2.getNombre() + " " + obj2.getPerfil() + " " + obj2.getPassword() + " ";
-
-                    } else if (variables[0].equals("Login")) {
+                    
+                    if (variables[0].equals("Login")) {
 
                         obj2.SetNombre(variables[1]);
                         obj2.SetPassword(variables[2]);
@@ -84,7 +72,7 @@ public class Servidor extends JFrame {
 
                         mensaje = obj2.getNombre() + " " + obj2.getPassword() + " ";
 
-                    } else if (variables[0].equals("newCliente")) {
+                    } else if (variables[0].equals("NewCliente")) {
 
                         cliente_dto.setNombre(variables[1]);
                         cliente_dto.setAp_Paterno(variables[2]);
@@ -98,11 +86,28 @@ public class Servidor extends JFrame {
 
                         cliente_dto.Insert(cliente_dto, conn);
 
-                        JOptionPane.showMessageDialog(null, "Cliente Agreado con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "Cliente Agregado con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
+
+                    } else if (variables[0].equals("EditCliente")) {
+
+                        cliente_dto.setId_clientes(variables[1]);
+                        cliente_dto.setNombre(variables[2]);
+                        cliente_dto.setAp_Paterno(variables[3]);
+                        cliente_dto.setAp_Materno(variables[4]);
+                        cliente_dto.setSexo(variables[5]);
+                        cliente_dto.setDireccion(variables[6]);
+                        cliente_dto.setEmail(variables[7]);
+                        cliente_dto.setTelefono(variables[8]);
+                        cliente_dto.setPais(variables[9]);
+                        cliente_dto.setTipo_cuenta(variables[10]);
+
+                        cliente_dto.Edit(cliente_dto, conn);
+
+                        JOptionPane.showMessageDialog(null, "Cliente Editado con Exito", "Exito!", JOptionPane.INFORMATION_MESSAGE);
 
                     } else if (variables[0].equals("DeleteCliente")) {
 
-                        cliente_dto.setNombre(variables[1]);
+                        cliente_dto.setId_clientes(variables[1]);
 
                         cliente_dto.Delete(cliente_dto, conn);
 
@@ -113,7 +118,7 @@ public class Servidor extends JFrame {
                         cliente_dto.setNombre(variables[1]);
                         cliente_dto.Search(cliente_dto, conn);
 
-                        mensaje = cliente_dto.getNombre() + " " + cliente_dto.getAp_Paterno() + " " + cliente_dto.getAp_Materno() + " " + cliente_dto.getSexo() + " " + cliente_dto.getDireccion() + " " + cliente_dto.getTelefono() + " " + cliente_dto.getEmail() + " " + cliente_dto.getPais() + " " + cliente_dto.getTipo_cuenta() + " ";
+                        mensaje = cliente_dto.getId_clientes() + " " + cliente_dto.getNombre() + " " + cliente_dto.getAp_Paterno() + " " + cliente_dto.getAp_Materno() + " " + cliente_dto.getSexo() + " " + cliente_dto.getDireccion() + " " + cliente_dto.getTelefono() + " " + cliente_dto.getEmail() + " " + cliente_dto.getPais() + " " + cliente_dto.getTipo_cuenta() + " ";
 
                     }
 

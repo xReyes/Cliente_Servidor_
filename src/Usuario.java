@@ -73,15 +73,15 @@ public class Usuario {
 
                 JOptionPane.showMessageDialog(null, "Sesion Iniciada");
 
-                PrincipalForm pf = new PrincipalForm();
-                pf.setVisible(true);
+//                PrincipalForm pf = new PrincipalForm();
+//                pf.setVisible(true);
 
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuario / Contraseña Incorrectos");
 
-            Login login = new Login();
-            login.setVisible(true);
+//            Login login = new Login();
+//            login.setVisible(true);
         }
     }
 }
