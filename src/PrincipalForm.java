@@ -630,6 +630,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         int a = JOptionPane.showConfirmDialog(this, "Estas Seguro de Limpiar los Campos?");
         if (JOptionPane.OK_OPTION == a) {
             limpar_Cliente();
+            
 
         } else {
 
