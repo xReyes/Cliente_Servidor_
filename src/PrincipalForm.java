@@ -39,7 +39,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     Calendar calendario;
     Thread h1;
     
-    //Master Reyes
+    //Master Reyes 1.1
 
     public PrincipalForm() {
         try {
