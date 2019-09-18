@@ -189,6 +189,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel16 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -207,7 +208,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel11.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         jLabel11.setText("Bienvenido(a) a Nuestro Sistema Bancario");
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(280, 220, 450, 26);
+        jLabel11.setBounds(280, 220, 450, 27);
 
         JTree_Inicio.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Inicio");
@@ -294,7 +295,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Ap Materno:");
         JPanelClientes.add(jLabel3);
-        jLabel3.setBounds(100, 240, 75, 17);
+        jLabel3.setBounds(100, 240, 76, 17);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Direccion:");
@@ -304,22 +305,22 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Telefono:");
         JPanelClientes.add(jLabel5);
-        jLabel5.setBounds(100, 330, 57, 17);
+        jLabel5.setBounds(100, 330, 58, 17);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Email:");
         JPanelClientes.add(jLabel6);
-        jLabel6.setBounds(440, 200, 36, 17);
+        jLabel6.setBounds(440, 200, 38, 17);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Pais:");
         JPanelClientes.add(jLabel7);
-        jLabel7.setBounds(440, 120, 28, 17);
+        jLabel7.setBounds(440, 120, 29, 17);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Tipo de Cliente:");
         JPanelClientes.add(jLabel8);
-        jLabel8.setBounds(440, 160, 94, 17);
+        jLabel8.setBounds(440, 160, 96, 17);
 
         btn_Nuevo_Cliente.setText("Nuevo");
         btn_Nuevo_Cliente.addActionListener(new java.awt.event.ActionListener() {
@@ -364,7 +365,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             }
         });
         JPanelClientes.add(btn_Eliminar_Cliente);
-        btn_Eliminar_Cliente.setBounds(600, 420, 69, 23);
+        btn_Eliminar_Cliente.setBounds(600, 420, 73, 23);
 
         txt_Email.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         JPanelClientes.add(txt_Email);
@@ -393,7 +394,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Ap Materno:");
         JPanelClientes.add(jLabel9);
-        jLabel9.setBounds(100, 200, 75, 17);
+        jLabel9.setBounds(100, 200, 76, 17);
 
         rad_Femenino.setText("Feminino");
         JPanelClientes.add(rad_Femenino);
@@ -401,7 +402,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
         rad_Masculino.setText("Masculino");
         JPanelClientes.add(rad_Masculino);
-        rad_Masculino.setBounds(200, 240, 71, 23);
+        rad_Masculino.setBounds(200, 240, 73, 23);
 
         combo_Tipo_Cuenta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         combo_Tipo_Cuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Premier" }));
@@ -442,7 +443,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Gustavo");
         JPanel_Usuarios.add(jLabel14);
-        jLabel14.setBounds(16, 30, 51, 17);
+        jLabel14.setBounds(16, 30, 50, 17);
 
         jLabel17.setText("ID");
         JPanel_Usuarios.add(jLabel17);
@@ -508,21 +509,30 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("Beth");
 
+        jButton1.setText("jButton1");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(675, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jButton1)))
+                .addContainerGap(569, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(442, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(jButton1)
+                .addContainerGap(377, Short.MAX_VALUE))
         );
 
         JTabbedPrincipal.addTab("Empresas", jPanel6);
@@ -899,6 +909,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JComboBox<String> combo_Pais;
     private javax.swing.JComboBox<String> combo_Tipo_Cuenta;
     private javax.swing.ButtonGroup groupSexo_Cliente;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
