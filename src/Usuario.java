@@ -1,8 +1,12 @@
 
+import java.net.DatagramSocket;
+import java.net.SocketException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Usuario {
@@ -73,15 +77,22 @@ public class Usuario {
 
                 JOptionPane.showMessageDialog(null, "Sesion Iniciada");
 
-//                PrincipalForm pf = new PrincipalForm();
-//                pf.setVisible(true);
+//                DatagramSocket socket;
+//                try {
+//                    socket = new DatagramSocket(5000);
+//                } catch (SocketException ex) {
+//                    Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+
+                PrincipalForm pf = new PrincipalForm();
+                pf.setVisible(true);
 
             }
         } else {
             JOptionPane.showMessageDialog(null, "Usuario / Contraseña Incorrectos");
 
-//            Login login = new Login();
-//            login.setVisible(true);
+            Login login = new Login();
+            login.setVisible(true);
         }
     }
 }

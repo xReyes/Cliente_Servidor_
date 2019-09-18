@@ -12,7 +12,7 @@ import javax.swing.*;
 public class Servidor extends JFrame {
 
     private JTextArea areaPantalla;
-    private DatagramSocket socket;
+    public static DatagramSocket socket;
     public Connection conn;
     String mensaje;
 
@@ -25,11 +25,12 @@ public class Servidor extends JFrame {
         setSize(400, 300);
         setVisible(true);
 
-//        Login lg = new Login();
-//        lg.setVisible(true);
         //crar objeto DatagramaSocket para enviar y recivir paquetes
         try {
             socket = new DatagramSocket(5000);
+
+//            Login lg = new Login();
+//            lg.setVisible(true);
 
         } //procesar los problemas que puedan ocurrir al crear el objeto DatagramSocket
         catch (SocketException excepcionSocket) {
@@ -62,7 +63,7 @@ public class Servidor extends JFrame {
                             0, recibirPaquete.getLength()));
                     String[] variables;
                     variables = cad.split(" ");
-                    
+
                     if (variables[0].equals("Login")) {
 
                         obj2.SetNombre(variables[1]);
