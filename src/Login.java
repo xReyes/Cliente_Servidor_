@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -12,17 +17,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author reyes
  */
 public class Login extends javax.swing.JFrame {
 
+    /**
+     * Creates new form Login
+     */
     String usuario;
     String password;
 
@@ -33,11 +36,11 @@ public class Login extends javax.swing.JFrame {
         try {
             initComponents();
             setTitle("Sistema Bancario");
+            setExtendedState(MAXIMIZED_BOTH);
             txt_Password.requestFocus();
 
             socket = new DatagramSocket();
 
-            setLocationRelativeTo(null);
         } catch (SocketException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,101 +54,152 @@ public class Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
-        txt_Usuario = new org.jdesktop.swingx.JXTextField();
-        txt_Password = new javax.swing.JPasswordField();
-        btn_Login = new javax.swing.JButton();
-        btn_Registro = new javax.swing.JButton();
-        Img_Icono = new javax.swing.JLabel();
+        jEImagePanel1 = new LIB.JEImagePanel();
+        jPanelTransparente1 = new LIB.JPanelTransparente();
+        txt_Usuario = new LIB.JTexfieldPH_FielTex();
+        txt_Password = new LIB.JTexfieldPH_Password();
+        JPanel_Login = new LIB.JPanelRound();
+        JLabel_Login = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanelTransparente2 = new LIB.JPanelTransparente();
+        JLabel_Registro = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setIconImage(new ImageIcon(getClass().getResource("/img/icono.png")).getImage());
+        setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jEImagePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/city-Paris-Eiffel-Tower-bokeh-Focus-blur-653955-wallhere.com.jpg"))); // NOI18N
+        jEImagePanel1.setLayout(new java.awt.GridBagLayout());
 
-        txt_Usuario.setFont(new java.awt.Font("Bahnschrift", 0, 18)); // NOI18N
-        txt_Usuario.setPrompt("Usuario:");
+        jPanelTransparente1.setColorPrimario(new java.awt.Color(222, 222, 188));
+        jPanelTransparente1.setColorSecundario(new java.awt.Color(87, 60, 39));
+        jPanelTransparente1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txt_Usuario.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        txt_Usuario.setPlaceholder("Usuario:");
+        jPanelTransparente1.add(txt_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, -1));
+
+        txt_Password.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        txt_Password.setPlaceholder("Contraseña:");
         txt_Password.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_PasswordKeyTyped(evt);
             }
         });
+        jPanelTransparente1.add(txt_Password, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
 
-        btn_Login.setText("Iniciar Sesion");
-        btn_Login.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_LoginActionPerformed(evt);
+        JPanel_Login.setColorPrimario(new java.awt.Color(73, 51, 30));
+        JPanel_Login.setColorSecundario(new java.awt.Color(73, 51, 30));
+        JPanel_Login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        JLabel_Login.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        JLabel_Login.setForeground(new java.awt.Color(255, 255, 255));
+        JLabel_Login.setText("Iniciar Sesion");
+        JLabel_Login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLabel_LoginMouseClicked(evt);
+            }
+        });
+        JPanel_Login.add(JLabel_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 100, 20));
+
+        jPanelTransparente1.add(JPanel_Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 200, 40));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Usuario:");
+        jPanelTransparente1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Sistema Bancario");
+        jPanelTransparente1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, 60));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Contraseña:");
+        jPanelTransparente1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, 20));
+
+        jPanelTransparente2.setColorPrimario(new java.awt.Color(73, 51, 30));
+        jPanelTransparente2.setColorSecundario(new java.awt.Color(73, 51, 30));
+
+        JLabel_Registro.setFont(new java.awt.Font("Segoe UI Light", 0, 18)); // NOI18N
+        JLabel_Registro.setForeground(new java.awt.Color(255, 255, 255));
+        JLabel_Registro.setText("Registrar");
+        JLabel_Registro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JLabel_RegistroMouseClicked(evt);
             }
         });
 
-        btn_Registro.setText("Registrar");
-        btn_Registro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_RegistroActionPerformed(evt);
+        javax.swing.GroupLayout jPanelTransparente2Layout = new javax.swing.GroupLayout(jPanelTransparente2);
+        jPanelTransparente2.setLayout(jPanelTransparente2Layout);
+        jPanelTransparente2Layout.setHorizontalGroup(
+            jPanelTransparente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 80, Short.MAX_VALUE)
+            .addGroup(jPanelTransparente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelTransparente2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(JLabel_Registro)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanelTransparente2Layout.setVerticalGroup(
+            jPanelTransparente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+            .addGroup(jPanelTransparente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelTransparente2Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(JLabel_Registro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jPanelTransparente1.add(jPanelTransparente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 80, 30));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Light", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("x");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
             }
         });
+        jPanelTransparente1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 20, 30));
 
-        Img_Icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/wallet_46876.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 24;
+        gridBagConstraints.ipady = 92;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        jEImagePanel1.add(jPanelTransparente1, gridBagConstraints);
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
-        jLabel1.setText("Sistema Bancario");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_Login)
-                        .addGap(262, 262, 262))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_Registro)
-                        .addContainerGap())))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(217, 217, 217)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_Password)
-                            .addComponent(txt_Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(Img_Icono)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
-                .addContainerGap(126, Short.MAX_VALUE))
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jEImagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Img_Icono)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(txt_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_Login)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(btn_Registro)
-                .addContainerGap())
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jEImagePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
         );
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
+    private void txt_PasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_PasswordKeyTyped
+
+        char tecla = evt.getKeyChar();
+        if (KeyEvent.VK_ENTER == tecla) {
+            JLabel_LoginMouseClicked(null);
+        }
+    }//GEN-LAST:event_txt_PasswordKeyTyped
+
+    private void JLabel_LoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLabel_LoginMouseClicked
 
         try {
             usuario = txt_Usuario.getText();
@@ -169,24 +223,20 @@ public class Login extends javax.swing.JFrame {
             excepcionSocket.printStackTrace();
             System.exit(1);
         }
+    }//GEN-LAST:event_JLabel_LoginMouseClicked
 
-    }//GEN-LAST:event_btn_LoginActionPerformed
-
-    private void btn_RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistroActionPerformed
+    private void JLabel_RegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JLabel_RegistroMouseClicked
 
         Cliente4 cliente = new Cliente4();
         cliente.setVisible(true);
 
-    }//GEN-LAST:event_btn_RegistroActionPerformed
+    }//GEN-LAST:event_JLabel_RegistroMouseClicked
 
-    private void txt_PasswordKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_PasswordKeyTyped
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
 
-        char tecla = evt.getKeyChar();
-        if (KeyEvent.VK_ENTER == tecla) {
-            btn_LoginActionPerformed(null);
-        }
+        System.exit(0);
 
-    }//GEN-LAST:event_txt_PasswordKeyTyped
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -198,9 +248,7 @@ public class Login extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
         } catch (ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
@@ -210,6 +258,9 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -234,14 +285,18 @@ public class Login extends javax.swing.JFrame {
         return b;
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Img_Icono;
-    private javax.swing.JButton btn_Login;
-    private javax.swing.JButton btn_Registro;
+    private javax.swing.JLabel JLabel_Login;
+    private javax.swing.JLabel JLabel_Registro;
+    private LIB.JPanelRound JPanel_Login;
+    private LIB.JEImagePanel jEImagePanel1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField txt_Password;
-    private org.jdesktop.swingx.JXTextField txt_Usuario;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private LIB.JPanelTransparente jPanelTransparente1;
+    private LIB.JPanelTransparente jPanelTransparente2;
+    private LIB.JTexfieldPH_Password txt_Password;
+    private LIB.JTexfieldPH_FielTex txt_Usuario;
     // End of variables declaration//GEN-END:variables
 }
