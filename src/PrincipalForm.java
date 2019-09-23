@@ -248,8 +248,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         btn_Editar_Cliente = new javax.swing.JButton();
         JPanel_Usuarios = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -274,8 +272,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         txt_buscar_id = new javax.swing.JTextField();
         btn_Buscar_Movimiento = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
@@ -513,12 +509,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         JPanel_Usuarios.add(jLabel14);
         jLabel14.setBounds(16, 30, 50, 17);
 
-        jLabel17.setText("ID");
-        JPanel_Usuarios.add(jLabel17);
-        jLabel17.setBounds(27, 73, 12, 14);
-        JPanel_Usuarios.add(jTextField1);
-        jTextField1.setBounds(90, 70, 140, 20);
-
         JTabbedPrincipal.addTab("Usuarios", JPanel_Usuarios);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -715,29 +705,15 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Empresas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
-        jButton1.setText("jButton1");
-
-        jTextField2.setText("jTextField1");
-
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(301, 301, 301)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(410, Short.MAX_VALUE))
+            .addGap(0, 784, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(229, Short.MAX_VALUE))
+            .addGap(0, 481, Short.MAX_VALUE)
         );
 
         JTabbedPrincipal.addTab("Empresas", jPanel6);
@@ -1119,7 +1095,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JComboBox<String> combo_Pais;
     private javax.swing.JComboBox<String> combo_Tipo_Cuenta;
     private javax.swing.ButtonGroup groupSexo_Cliente;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1128,7 +1103,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1150,8 +1124,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JRadioButton rad_Femenino;
     private javax.swing.JRadioButton rad_Masculino;
     private javax.swing.JTextField txt_Ap_Materno;
