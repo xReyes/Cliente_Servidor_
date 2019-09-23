@@ -140,7 +140,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
         groupSexo_Cliente = new javax.swing.ButtonGroup();
         JTabbedPrincipal = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        JPanelMenu = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTree_Inicio = new javax.swing.JTree();
@@ -182,7 +182,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         JPanel_Usuarios = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txt_ID_usuario = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -201,14 +201,14 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
         JTabbedPrincipal.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.setLayout(null);
+        JPanelMenu.setBackground(new java.awt.Color(255, 255, 255));
+        JPanelMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        JPanelMenu.setLayout(null);
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         jLabel11.setText("Bienvenido(a) a Nuestro Sistema Bancario");
-        jPanel1.add(jLabel11);
-        jLabel11.setBounds(280, 220, 450, 27);
+        JPanelMenu.add(jLabel11);
+        jLabel11.setBounds(280, 220, 450, 26);
 
         JTree_Inicio.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Inicio");
@@ -246,37 +246,37 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         });
         jScrollPane1.setViewportView(JTree_Inicio);
 
-        jPanel1.add(jScrollPane1);
+        JPanelMenu.add(jScrollPane1);
         jScrollPane1.setBounds(1, 1, 220, 504);
 
         btn_movimientos.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         btn_movimientos.setText("Movimientos de Cuenta");
-        jPanel1.add(btn_movimientos);
+        JPanelMenu.add(btn_movimientos);
         btn_movimientos.setBounds(400, 300, 200, 40);
 
         btn_estadoCuenta.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         btn_estadoCuenta.setText("Estado de Cuenta");
-        jPanel1.add(btn_estadoCuenta);
+        JPanelMenu.add(btn_estadoCuenta);
         btn_estadoCuenta.setBounds(400, 370, 200, 40);
 
         btn_nomina.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
         btn_nomina.setText("Nomina");
-        jPanel1.add(btn_nomina);
+        JPanelMenu.add(btn_nomina);
         btn_nomina.setBounds(400, 440, 200, 40);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono2 - copia.png"))); // NOI18N
-        jPanel1.add(jLabel12);
+        JPanelMenu.add(jLabel12);
         jLabel12.setBounds(400, 40, 190, 150);
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/une.png"))); // NOI18N
-        jPanel1.add(jLabel13);
+        JPanelMenu.add(jLabel13);
         jLabel13.setBounds(720, 10, 60, 50);
 
         JLabel_Hora.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
-        jPanel1.add(JLabel_Hora);
+        JPanelMenu.add(JLabel_Hora);
         JLabel_Hora.setBounds(640, 480, 140, 20);
 
-        JTabbedPrincipal.addTab("Menu", jPanel1);
+        JTabbedPrincipal.addTab("Menu", JPanelMenu);
 
         JPanelClientes.setBackground(new java.awt.Color(255, 255, 255));
         JPanelClientes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cliente", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
@@ -295,7 +295,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Ap Materno:");
         JPanelClientes.add(jLabel3);
-        jLabel3.setBounds(100, 240, 76, 17);
+        jLabel3.setBounds(100, 240, 75, 17);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Direccion:");
@@ -305,22 +305,22 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Telefono:");
         JPanelClientes.add(jLabel5);
-        jLabel5.setBounds(100, 330, 58, 17);
+        jLabel5.setBounds(100, 330, 57, 17);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Email:");
         JPanelClientes.add(jLabel6);
-        jLabel6.setBounds(440, 200, 38, 17);
+        jLabel6.setBounds(440, 200, 36, 17);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Pais:");
         JPanelClientes.add(jLabel7);
-        jLabel7.setBounds(440, 120, 29, 17);
+        jLabel7.setBounds(440, 120, 28, 17);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Tipo de Cliente:");
         JPanelClientes.add(jLabel8);
-        jLabel8.setBounds(440, 160, 96, 17);
+        jLabel8.setBounds(440, 160, 94, 17);
 
         btn_Nuevo_Cliente.setText("Nuevo");
         btn_Nuevo_Cliente.addActionListener(new java.awt.event.ActionListener() {
@@ -365,7 +365,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             }
         });
         JPanelClientes.add(btn_Eliminar_Cliente);
-        btn_Eliminar_Cliente.setBounds(600, 420, 73, 23);
+        btn_Eliminar_Cliente.setBounds(600, 420, 69, 23);
 
         txt_Email.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         JPanelClientes.add(txt_Email);
@@ -394,7 +394,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Ap Materno:");
         JPanelClientes.add(jLabel9);
-        jLabel9.setBounds(100, 200, 76, 17);
+        jLabel9.setBounds(100, 200, 75, 17);
 
         rad_Femenino.setText("Feminino");
         JPanelClientes.add(rad_Femenino);
@@ -402,7 +402,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
         rad_Masculino.setText("Masculino");
         JPanelClientes.add(rad_Masculino);
-        rad_Masculino.setBounds(200, 240, 73, 23);
+        rad_Masculino.setBounds(200, 240, 71, 23);
 
         combo_Tipo_Cuenta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         combo_Tipo_Cuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Premier" }));
@@ -443,13 +443,13 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Gustavo");
         JPanel_Usuarios.add(jLabel14);
-        jLabel14.setBounds(16, 30, 50, 17);
+        jLabel14.setBounds(16, 30, 51, 17);
 
         jLabel17.setText("ID");
         JPanel_Usuarios.add(jLabel17);
         jLabel17.setBounds(27, 73, 11, 14);
-        JPanel_Usuarios.add(jTextField1);
-        jTextField1.setBounds(90, 70, 140, 20);
+        JPanel_Usuarios.add(txt_ID_usuario);
+        txt_ID_usuario.setBounds(90, 70, 140, 20);
 
         JTabbedPrincipal.addTab("Usuarios", JPanel_Usuarios);
 
@@ -894,6 +894,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabel_Hora;
     private javax.swing.JPanel JPanelClientes;
+    private javax.swing.JPanel JPanelMenu;
     private javax.swing.JPanel JPanel_Usuarios;
     private javax.swing.JTabbedPane JTabbedPrincipal;
     private javax.swing.JTree JTree_Inicio;
@@ -929,7 +930,6 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -937,13 +937,13 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JRadioButton rad_Femenino;
     private javax.swing.JRadioButton rad_Masculino;
     private javax.swing.JTextField txt_Ap_Materno;
     private javax.swing.JTextField txt_Ap_Paterno;
     private javax.swing.JTextField txt_Direccion;
     private javax.swing.JTextField txt_Email;
+    private javax.swing.JTextField txt_ID_usuario;
     private javax.swing.JTextField txt_Nombre;
     private javax.swing.JTextField txt_Telefono;
     private javax.swing.JTextField txt_id_cliente;
