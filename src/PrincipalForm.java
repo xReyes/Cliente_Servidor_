@@ -1,9 +1,15 @@
 
 import DTO.Clientes_DTO;
+import DTO.Movimientos_DTO;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -27,6 +33,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
     Clientes_DTO dto;
+    Movimientos_DTO movimiento_dto;
     Conexion conn;
 
     String nombre_Cliente;
@@ -40,12 +47,17 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     Thread h1;
 
     public PrincipalForm() {
+        
         try {
+            
             initComponents();
 
             dto = new Clientes_DTO();
             conn = new Conexion();
             socket = new DatagramSocket();
+
+            Generar_ID();
+            fecha();
 
             setLocationRelativeTo(null);
             setTitle("Sistema Bancario");
@@ -58,6 +70,9 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
             btn_Editar_Cliente.setEnabled(false);
             btn_Eliminar_Cliente.setEnabled(false);
+
+            btn_Editar_Movimiento.setEnabled(false);
+            btn_Eliminar_Movimiento.setEnabled(false);
 
         } catch (SocketException ex) {
             Logger.getLogger(PrincipalForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -133,6 +148,55 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
     }
 
+    public void limpiar_Movimiento() {
+
+        limpiar_Campos(txt_id);
+        limpiar_Campos(txt_tm);
+        limpiar_Campos(txt_fm);
+        limpiar_Campos(txt_s);
+        limpiar_Campos(txt_nc);
+        limpiar_Campos(txt_cd);
+        limpiar_Campos(txt_buscar_id);
+
+        System.out.println(JPanelClientes.getSize());
+
+    }
+
+    public void ID_AUTO(Connection conn) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        ps = conn.prepareStatement("SELECT MAX(id_movimiento) AS id_movimiento " + "FROM movimientos");
+        rs = ps.executeQuery();
+        if (rs.next()) {
+            int id = (rs.getInt(1) + 1);
+
+            txt_id.setText(String.valueOf(id));
+        }
+    }
+
+    private void Generar_ID() {
+
+        try {
+
+            ID_AUTO(conn.Conexion());
+
+        } catch (SQLException e) {
+        }
+    }
+
+    private void fecha() {
+
+        Date now = new Date(System.currentTimeMillis());
+        SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat hour = new SimpleDateFormat("HH:mm:ss");
+
+        //System.out.println(date.format(now));
+        //System.out.println(hour.format(now));
+        //System.out.println(now);
+        txt_fm.setText(String.valueOf(now));
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -189,10 +253,29 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
+        txt_id = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        txt_tm = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        txt_nc = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
+        txt_fm = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        txt_s = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        txt_cd = new javax.swing.JTextField();
+        btn_Nuevo_Movimiento = new javax.swing.JButton();
+        btn_Guardar_Movimiento = new javax.swing.JButton();
+        btn_Cancelar_Movimiento = new javax.swing.JButton();
+        btn_Editar_Movimiento = new javax.swing.JButton();
+        btn_Eliminar_Movimiento = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
+        txt_buscar_id = new javax.swing.JTextField();
+        btn_Buscar_Movimiento = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
@@ -209,7 +292,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel11.setFont(new java.awt.Font("Segoe UI Emoji", 0, 24)); // NOI18N
         jLabel11.setText("Bienvenido(a) a Nuestro Sistema Bancario");
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(280, 220, 450, 26);
+        jLabel11.setBounds(280, 220, 450, 27);
 
         JTree_Inicio.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Inicio");
@@ -296,32 +379,32 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Ap Materno:");
         JPanelClientes.add(jLabel3);
-        jLabel3.setBounds(100, 240, 75, 17);
+        jLabel3.setBounds(100, 240, 76, 17);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Direccion:");
         JPanelClientes.add(jLabel4);
-        jLabel4.setBounds(100, 290, 61, 17);
+        jLabel4.setBounds(100, 290, 63, 17);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Telefono:");
         JPanelClientes.add(jLabel5);
-        jLabel5.setBounds(100, 330, 57, 17);
+        jLabel5.setBounds(100, 330, 58, 17);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Email:");
         JPanelClientes.add(jLabel6);
-        jLabel6.setBounds(440, 200, 36, 17);
+        jLabel6.setBounds(440, 200, 39, 17);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Pais:");
         JPanelClientes.add(jLabel7);
-        jLabel7.setBounds(440, 120, 28, 17);
+        jLabel7.setBounds(440, 120, 30, 17);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setText("Tipo de Cliente:");
         JPanelClientes.add(jLabel8);
-        jLabel8.setBounds(440, 160, 94, 17);
+        jLabel8.setBounds(440, 160, 98, 17);
 
         btn_Nuevo_Cliente.setText("Nuevo");
         btn_Nuevo_Cliente.addActionListener(new java.awt.event.ActionListener() {
@@ -366,7 +449,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             }
         });
         JPanelClientes.add(btn_Eliminar_Cliente);
-        btn_Eliminar_Cliente.setBounds(600, 420, 69, 23);
+        btn_Eliminar_Cliente.setBounds(600, 420, 71, 23);
         JPanelClientes.add(txt_Email);
         txt_Email.setBounds(540, 190, 190, 30);
         JPanelClientes.add(txt_nombre_Buscar);
@@ -383,7 +466,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Ap Materno:");
         JPanelClientes.add(jLabel9);
-        jLabel9.setBounds(100, 200, 75, 17);
+        jLabel9.setBounds(100, 200, 76, 17);
 
         rad_Femenino.setText("Feminino");
         JPanelClientes.add(rad_Femenino);
@@ -406,7 +489,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Nombre:");
         JPanelClientes.add(jLabel10);
-        jLabel10.setBounds(100, 120, 54, 17);
+        jLabel10.setBounds(100, 120, 53, 17);
         JPanelClientes.add(txt_Nombre);
         txt_Nombre.setBounds(200, 110, 190, 30);
 
@@ -428,11 +511,11 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Gustavo");
         JPanel_Usuarios.add(jLabel14);
-        jLabel14.setBounds(16, 30, 51, 17);
+        jLabel14.setBounds(16, 30, 50, 17);
 
         jLabel17.setText("ID");
         JPanel_Usuarios.add(jLabel17);
-        jLabel17.setBounds(27, 73, 11, 14);
+        jLabel17.setBounds(27, 73, 12, 14);
         JPanel_Usuarios.add(jTextField1);
         jTextField1.setBounds(90, 70, 140, 20);
 
@@ -451,7 +534,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(719, Short.MAX_VALUE))
+                .addContainerGap(727, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,24 +549,165 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Movimientos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
+        txt_id.setEnabled(false);
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel18.setText("ID:");
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel19.setText("Tipo Movimiento:");
+
+        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel20.setText("Fecha Movimiento:");
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel21.setText("Saldo:");
+
+        txt_fm.setEnabled(false);
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setText("Numero Cuenta:");
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel23.setText("Cuenta Destino:");
+
+        btn_Nuevo_Movimiento.setText("Nuevo");
+        btn_Nuevo_Movimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Nuevo_MovimientoActionPerformed(evt);
+            }
+        });
+
+        btn_Guardar_Movimiento.setText("Guardar");
+        btn_Guardar_Movimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Guardar_MovimientoActionPerformed(evt);
+            }
+        });
+
+        btn_Cancelar_Movimiento.setText("Cancelar");
+        btn_Cancelar_Movimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Cancelar_MovimientoActionPerformed(evt);
+            }
+        });
+
+        btn_Editar_Movimiento.setText("Editar");
+        btn_Editar_Movimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Editar_MovimientoActionPerformed(evt);
+            }
+        });
+
+        btn_Eliminar_Movimiento.setText("Eliminar");
+        btn_Eliminar_Movimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Eliminar_MovimientoActionPerformed(evt);
+            }
+        });
+
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel16.setText("Luis");
+        jLabel16.setText("Buscar por ID:");
+
+        btn_Buscar_Movimiento.setText("Buscar");
+        btn_Buscar_Movimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Buscar_MovimientoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel16)
-                .addContainerGap(743, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(btn_Nuevo_Movimiento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                        .addComponent(btn_Guardar_Movimiento)
+                        .addGap(53, 53, 53)
+                        .addComponent(btn_Cancelar_Movimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txt_id))
+                            .addComponent(jLabel19))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel21))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_s, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                            .addComponent(txt_tm)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(txt_fm)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel22)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_nc, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_Editar_Movimiento)
+                            .addComponent(jLabel23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_cd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_Eliminar_Movimiento, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Buscar_Movimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel16)
-                .addContainerGap(452, Short.MAX_VALUE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(txt_buscar_id, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_Buscar_Movimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(71, 71, 71)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22)
+                    .addComponent(txt_nc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(txt_tm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23)
+                    .addComponent(txt_cd, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(txt_fm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel21)
+                            .addComponent(txt_s, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_Nuevo_Movimiento)
+                    .addComponent(btn_Guardar_Movimiento)
+                    .addComponent(btn_Cancelar_Movimiento)
+                    .addComponent(btn_Editar_Movimiento)
+                    .addComponent(btn_Eliminar_Movimiento))
+                .addGap(52, 52, 52))
         );
 
         JTabbedPrincipal.addTab("Movimientos", jPanel5);
@@ -493,7 +717,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
         jButton1.setText("jButton1");
 
-        jTextField1.setText("jTextField1");
+        jTextField2.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -502,15 +726,15 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(301, 301, 301)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(410, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(190, 190, 190)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(229, Short.MAX_VALUE))
@@ -525,7 +749,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 776, Short.MAX_VALUE)
+            .addGap(0, 784, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,7 +765,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 776, Short.MAX_VALUE)
+            .addGap(0, 784, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -713,6 +937,66 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
 
     }//GEN-LAST:event_btn_Buscar_ClienteActionPerformed
 
+    private void btn_Nuevo_MovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Nuevo_MovimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Nuevo_MovimientoActionPerformed
+
+    private void btn_Guardar_MovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Guardar_MovimientoActionPerformed
+
+        try {
+
+            String id_movimiento;
+            String tipo_movimiento;
+            String fecha_movimiento;
+            double saldo;
+            String n_cuenta;
+            String cuenta_destino;
+
+            Date now = new Date(System.currentTimeMillis());
+
+            id_movimiento = txt_id.getText().trim();
+            tipo_movimiento = txt_tm.getText().trim();
+            fecha_movimiento = String.valueOf(now);
+            saldo = Double.parseDouble(txt_s.getText().trim());
+            n_cuenta = txt_nc.getText().trim();
+            cuenta_destino = txt_cd.getText().trim();
+
+            String mensaje = "NewMovimiento " + tipo_movimiento + " " + fecha_movimiento + " " + saldo + " " + n_cuenta + " " + cuenta_destino + " ";
+            byte datos[] = mensaje.getBytes();
+            JOptionPane.showMessageDialog(null, mensaje);
+            //crear enviarPaquete
+
+            DatagramPacket snd = ip.Direccion(datos);
+            socket.send(snd);//enviar paquete
+
+        } catch (IOException exceptionES) {
+            exceptionES.printStackTrace();
+        }
+        try {
+            socket = new DatagramSocket();
+        } catch (SocketException excepcionSocket) {
+            excepcionSocket.printStackTrace();
+            System.exit(1);
+        }
+
+    }//GEN-LAST:event_btn_Guardar_MovimientoActionPerformed
+
+    private void btn_Cancelar_MovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Cancelar_MovimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Cancelar_MovimientoActionPerformed
+
+    private void btn_Editar_MovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Editar_MovimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Editar_MovimientoActionPerformed
+
+    private void btn_Eliminar_MovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Eliminar_MovimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Eliminar_MovimientoActionPerformed
+
+    private void btn_Buscar_MovimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Buscar_MovimientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Buscar_MovimientoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -818,11 +1102,17 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTabbedPane JTabbedPrincipal;
     private javax.swing.JTree JTree_Inicio;
     private javax.swing.JButton btn_Buscar_Cliente;
+    private javax.swing.JButton btn_Buscar_Movimiento;
     private javax.swing.JButton btn_Cancelar_Cliente;
+    private javax.swing.JButton btn_Cancelar_Movimiento;
     private javax.swing.JButton btn_Editar_Cliente;
+    private javax.swing.JButton btn_Editar_Movimiento;
     private javax.swing.JButton btn_Eliminar_Cliente;
+    private javax.swing.JButton btn_Eliminar_Movimiento;
     private javax.swing.JButton btn_Guardar_Cliente;
+    private javax.swing.JButton btn_Guardar_Movimiento;
     private javax.swing.JButton btn_Nuevo_Cliente;
+    private javax.swing.JButton btn_Nuevo_Movimiento;
     private javax.swing.JButton btn_estadoCuenta;
     private javax.swing.JButton btn_movimientos;
     private javax.swing.JButton btn_nomina;
@@ -839,7 +1129,13 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -855,6 +1151,7 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JRadioButton rad_Femenino;
     private javax.swing.JRadioButton rad_Masculino;
     private javax.swing.JTextField txt_Ap_Materno;
@@ -863,6 +1160,13 @@ public class PrincipalForm extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTextField txt_Email;
     private javax.swing.JTextField txt_Nombre;
     private javax.swing.JTextField txt_Telefono;
+    private javax.swing.JTextField txt_buscar_id;
+    private javax.swing.JTextField txt_cd;
+    private javax.swing.JTextField txt_fm;
+    public static javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txt_nc;
     private javax.swing.JTextField txt_nombre_Buscar;
+    private javax.swing.JTextField txt_s;
+    private javax.swing.JTextField txt_tm;
     // End of variables declaration//GEN-END:variables
 }
